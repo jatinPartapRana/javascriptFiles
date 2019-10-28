@@ -1,0 +1,259 @@
+JavaScipt Notes:
+
+const : constant is used for constant values
+
+we can not declare let variable 2 times:
+let firstName = 'aa';
+let firstName = 'bb';  // it will give run time error.
+
+
+undefined: when we do not specify the value for a variable 
+null : it is done programatically javascript does not assign null of its own.
+for ex: 
+var temp;
+
+console.log(temp)  // undefined 
+
+difference between let and var
+
+if(true){
+let val1 = "12";
+var val2 ="12";
+}
+console.log(val1);// gives error
+console.log(val2);//prints the value
+
+
+if we do not mention the type of the variable then it is global by default.
+For ex:
+if(true){
+	 king = 'Ram';
+	console.log(king)  // Ram
+}
+
+console.log(king)  //Ram
+
+but if we use let with king in the if condition then it gives the error.
+
+
+
+---------
+
+let king = 'john'
+if(true){
+	let king = 'Sam';
+	
+		if(true){
+			let king = 'RAM';
+			console.log(king)// will print RAM because it is in scope of this condition
+		}	
+}
+console.log(king)//john
+
+
+------
+
+tilt: `` these are used when we want to have javascript code in the string 
+
+console.log(`we have ${superHeoes.length} super heroes`);
+
+---------
+shift : deletes the first element of the array.
+const numbers = ['One','two','three','four','five'];
+let shiftingElement = numbers.shift();
+
+numbers.unshift('six'); // inserts value at the start of the array.
+
+numbers.pop(); // deletes the eleement at the end
+
+
+
+umbers.splice(2, 1, 'SOMETHING'); // THIS method takes first argument as the 
+                                    // the index of the array
+                                    //2nd argument as the no of elemments to delete from the 1st argument index
+                                    // 3 rd agument is the value to put in palce of the deleted value.
+
+whenver a value is not defined it is not defined in javascript 
+
+
+
+we can change the properties of the const array but we can not reassign it 
+
+const car = {type:"Fiat", model:"500", color:"white"};
+car = {type:"Volvo", model:"EX60", color:"red"};    // ERROR
+
+
+--
+
+for each
+days.forEach(function(day, index){ // the first element is the element itself and 2nd is the index
+    console.log(`index: ${index} , day : ${day}`);
+})
+
+
+------------
+difference b/t == and ===
+in == it checks the value only 
+in === it checks the value and the object type as well
+for ex
+if(2 == 2.0)  // is true
+if(2 === 2.0) // is true
+
+let myVar = "";
+let mayVar2 = "";
+if(myVar === myVar2) // true
+
+but
+
+let myVar = {};
+let mayVar2 = {};
+if(myVar === myVar2) // false
+
+
+-----
+array.indexOf('value)  // if it is not there then it returns -1 and its better to handle that case.
+
+
+
+
+const newTodos = [{
+    title :"Buy bread",
+    isDone:false
+},{
+    title:"go to gym",
+    isDone: false,
+},{
+    "title":"record video",
+    "isDone":true
+}];
+
+//Method 1
+
+//this findIndex accepts the call back function and returns the index 
+//on the basis of the matched condition .
+// const index = newTodos.findIndex(function(todo, index){
+//     return todo.title === "go to gym";
+// });
+// console.log(index);
+
+
+const findTodo = function(myTodos, title){
+    const index = myTodos.findIndex(function(todo, findIndex){
+        return todo.title.toLowerCase() === title.toLowerCase();
+    })
+    return myTodos[index];
+};
+
+
+let printMe = findTodo(newTodos, "go to gym");
+console.log(printMe);
+
+
+//Method 2: 
+const findTodo2 = function(myTodos, title){
+    const titleReturned = myTodos.find(function(todo, index){
+        return todo.title.toLowerCase() === title.toLowerCase();
+    })
+    return titleReturned;
+};
+
+
+let printMe2 = findTodo2(newTodos, "go to gym");
+console.log(printMe2);
+
+
+
+---------
+
+
+If we are using function inside the object and inside the function we are using the variables
+of the obejct then we need to use this keyword.
+For ex:
+const cameras = {
+    price:600,
+    weight: 2000,
+    mydesc: function(){
+        return `This canon is of ${this.price}`;
+    }
+}
+
+------
+
+In the object do not use arrow functions it gives error
+ex:
+const cameras = {
+    price:600,
+    weight: 2000,
+    mydesc: () =>{
+        return `This canon is of ${this.price}`;
+    }
+};
+
+
+
+
+--------
+In redux if we are returning the key value pair then using the parenthesis before 
+the returned value.
+const func = () => ({key:'value'})
+
+
+
+--------
+Coercion:
+ 
+ console.log('5' - 5)  // 0
+ console.log('5' + 5)  // 55
+ 
+ const giveType = typeof 5; // number
+  const giveType = typeof "5""; // string
+  
+  const adder = true + 5;// 6
+ 
+let  loginDetails = []; 
+ const loginId = loginDetails[0];
+ if(loginId){
+ 	console.log("user allowed to login");
+ }
+ else{
+ 	 	console.log("user not allowed to login");
+ }
+ 
+ // here it takes the loginId as false.
+ 
+ but if the If statement is having 
+ if("") // empty space then take it as false
+ null and undefined are also treated as false 
+
+
+
+
+-----------
+// search for iterators in maps
+
+maps and for of loops:
+
+
+
+------
+
+DOM:how we are structuring our web elements 
+Document - can be a file
+object: anything inside html ex body tag button tag.
+
+document.head
+document.body
+
+console.log(document.documentURL)
+
+
+
+---------
+advance topics:
+
+
+local storage: it can be in key value pair only.It keeps the data in the browser as long as
+we want or till we use the clear function.
+session storage : it keeps the data in the browser till the user closes the closes
+the window.
+

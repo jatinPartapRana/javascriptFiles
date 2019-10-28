@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <script scr="01_basics/webbasics/myscript.js"></script>
+    <h1>this is my new file</h1>
+    <p id ="1">hello</p>
+    <script>
+        document.title = 'i got changed';
+        console.log(document.getElementById("1"));
+        //best way
+        const element = document.querySelector("p");// will select the first element , can pass id , tags
+        const element = document.querySelectorAll("p");// will select all the element
+        console.log(element);
+    </script>
+</body>
+</html>
